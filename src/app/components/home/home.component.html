@@ -1,0 +1,156 @@
+ 
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main class="mt-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section>
+      <div class="row">
+        <div class="col-md-6 gx-5 mb-4">
+          <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+            <img src="https://www.zastavki.com/pictures/1920x1200/2012/Food_Berries_and_fruits_and_nuts_Red_Apples_035013_.jpg" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 gx-5 mb-4">
+          <h4><strong>Fresh Farm Food</strong></h4>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+            eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+            sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+          </p>
+          <p><strong>Fresh Vegetables and Fruit from the Farm</strong></p>
+          <p class="text-muted">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
+            nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
+            alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+          </p>
+        </div>
+      </div>
+    </section>
+    <!--Section: Content-->
+
+    <hr class="my-5" />
+
+    <!--Section: Content-->
+    <section class="text-center">
+      <h2 class="mb-5"><strong>Welcome To The Farm!!</strong></h2>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" >
+          <div class="card" >
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" >
+              <img src="https://media.cntraveller.in/wp-content/uploads/2020/11/Farm-fresh-produce.jpg" class="img-fluid" style="height: 200px;"/>
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Vegetables</h5>
+              <p class="card-text">
+                Buy Fresh Veggies from Farm
+              </p>
+              <a href="#!" class="btn btn-primary">Buy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="https://www.10wallpaper.com/wallpaper/medium/1511/White_Grapes_Farm-fruit_food_wallpaper_medium.jpg" class="img-fluid" style="height: 200px;"/>
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Fruits</h5>
+              <p class="card-text">
+               Buy Fresh Fruits From Farm
+              </p>
+              <a href="#!" class="btn btn-primary">Buy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="https://wallpapercave.com/wp/wp3115786.jpg" class="img-fluid" style="height: 200px;"/>
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Dry Fruits</h5>
+              <p class="card-text">
+                Buy Dry Fruits from Farm
+              </p>
+              <a href="#!" class="btn btn-primary">Buy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Section: Content-->
+
+    <hr class="my-5" />
+
+    <!--Section: Content-->
+    <section class="">
+      <h4 class="mb-5 text-center"><strong>Register Yourself Today!!</strong></h4>
+
+      <div class=" justify-content-center">
+        <div class="form-wrapper">
+          <form [formGroup]="regForm" class="form-signin" autocomplete="off" novalidate>
+            <img class="mb-1" src="/assets/images/logo.png" alt="" width="200" height="auto">
+            <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+            <input type="text" id="inputFirstName" class="form-control" placeholder="First name" formControlName="firstName" autofocus
+                    [ngClass]="getValidationClasses('firstName')">
+        
+        
+            <input type="text" id="inputLastName" class="form-control" placeholder="Last name" formControlName="lastName" autofocus
+                   [ngClass]="getValidationClasses('lastName')">
+        
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="email" autofocus
+                   [ngClass]="getValidationClasses('email')">
+        
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password"
+                   [ngClass]="getValidationClasses('password')">
+        
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="submitForm()">Register now</button>
+            <a class="link" routerLink='/login'>Already register?</a>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>or sign up with:</p>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-github"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!--Section: Content-->
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
