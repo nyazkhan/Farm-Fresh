@@ -45,7 +45,7 @@
   <nav class="navbar navbar-expand-lg navbar-light shadow-lg d-none d-lg-block" style="z-index: 2000; background-color: #2626275d;">
     <div class="container-fluid">
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="#"><i class="fa fa-seedling mr-2 text-success"></i>Farm Fresh</a>
+      <a class="navbar-brand" routerLink="/home"><i class="fa fa-seedling mr-2 text-success"></i>Farm Fresh</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -62,17 +62,17 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link"  aria-disabled="true" routerLink="/cart" ><i class="fa fa-shopping-cart m-2"></i>Cart
-          <span *ngIf="!(getNumberOfItemsInCart() === 0) && (isLoggedIn() | async) " class="badge badge-primary badge-size badge-pill ml-2">{{getNumberOfItemsInCart()}}</span></a>
+          <span *ngIf="!(getNumberOfItemsInCart() === 0)  " class="badge badge-primary badge-size badge-pill ml-2">{{getNumberOfItemsInCart()}}</span></a>
       </li>
     </ul>
     <div>
     <form class="form-inline mr-2 my-lg-0"> <input class="form-control mr-sm-2" type="text" placeholder="Search"> 
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> </form>
     </div>
-      <button class="btn btn-outline-success mr-2" routerLink='/login' *ngIf="!(isLoggedIn() | async)">
+      <button class="btn btn-outline-success mr-2" routerLink='/login' *ngIf="!(isLoggedIn())">
       <i class="fa fa-user-circle mr-2" aria-hidden="true"></i>Login</button>
 
-    <button class="btn btn-outline-success" (click)="logout()" *ngIf="isLoggedIn() | async">
+    <button class="btn btn-outline-success" (click)="logout()" *ngIf="isLoggedIn()">
       <i class="fa fa-arrow-circle-left mr-2" aria-hidden="true"></i>Logout</button>
     </div>
     </div>
@@ -80,63 +80,6 @@
   <!-- Navbar -->
 
   <!-- Carousel wrapper -->
-  <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#introCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#introCarousel" data-slide-to="1"></li>
-      <li data-target="#introCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Inner -->
-    <div class="carousel-inner">
-      <!-- Single item -->
-      <div class="carousel-item active">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="carousel-caption d-none d-md-block">
-              <h1>FARM
-                FRESH
-                FOOD
-              </h1>            
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Single item -->
-      <div class="carousel-item">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="carousel-caption d-none d-md-block">
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Single item -->
-      <div class="carousel-item">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-white text-center">
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Inner -->
-
-    <!-- Controls -->
-    <a class="carousel-control-prev"  role="button" data-mdb-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next"  role="button" data-mdb-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+  
   <!-- Carousel wrapper -->
 </header>

@@ -1,4 +1,4 @@
-<div class="container text-center" *ngIf="lastPurchases">
+<div class="container auto-h text-center" *ngIf="lastPurchases">
   <table class="table">
     <thead>
     <tr class="alert-primary">
@@ -10,12 +10,13 @@
     </tr>
     </thead>
     <tbody>
+    
     <tr *ngFor="let purchase of lastPurchases;">
       <td>{{purchase.personal.firstName + ' ' + purchase.personal.lastName}}</td>
       <td>{{purchase.personal.email}}</td>
       <td>{{purchase.purchaseDate | date}}</td>
       <td>{{purchase.items.length}}</td>
-      <td>{{getTotal(purchase.items) | currency: 'ILS'}}</td>
+      <td>{{getTotal(purchase.items) | currency: 'INR'}}</td>
     </tr>
     </tbody>
   </table>

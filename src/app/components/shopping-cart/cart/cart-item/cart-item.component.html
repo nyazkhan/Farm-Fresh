@@ -5,12 +5,12 @@
         <img src="{{this.cartItem.product.imageUrl}}" width="100px" height="70px"  class="img-fluid rounded shadow-lg">
         <div class="ml-3 d-inline-block align-middle text-center">
           <span class="text-muted font-weight-normal font-italic d-block">{{this.cartItem.product.name}}</span>
-          <span class="text-muted font-weight-normal font-italic d-block">{{this.cartItem.product.price | currency: 'ILS'}}</span>
+          <span class="text-muted font-weight-normal font-italic d-block">{{this.cartItem.product.price | currency: 'INR'}}</span>
         </div>
       </div>
     </div>
     <div class="col-2 border-0 align-middle text-center my-auto">
-      <strong>{{this.cartItem.product.price * this.cartItem.qty  | currency: 'ILS'}}</strong>
+      <strong>{{this.cartItem.product.price * this.cartItem.qty  | currency: 'INR'}}</strong>
     </div>
     <div class="col-2 border-0 align-middle text-center my-auto">
       <i class="fa fa-minus m-3" aria-hidden="true" (click)="decreaseQty()"></i>

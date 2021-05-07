@@ -21,13 +21,23 @@ export class ProductService {
   }
 
   uploadProduct(name: string, price: string, category: string, file: File) {
-    const formData: FormData = new FormData();
+    // const formData: FormData = new FormData();
+    let obj = {
+      
+      "name": name,
+      "description": name,
+      "imageUrl": "https://www.allianceplast.com/wp-content/uploads/2017/11/no-image.png",
+      "price": price,
+      "categories": [
+        "all",
+        category
+      ]
+    }
+    // formData.append('image', file, file.name);
+    // formData.append('name', name);
+    // formData.append('categories', category);
+    // formData.append('price', price);
 
-    formData.append('image', file, file.name);
-    formData.append('name', name);
-    formData.append('categories', category);
-    formData.append('price', price);
-
-    return this.http.post(productsUrl + '/new', formData);
+    return this.http.post(productsUrl , obj);
   }
 }

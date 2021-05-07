@@ -31,7 +31,7 @@ export class CartStore{
   addToCart(product: Product, qty: number) {
     const cartItems = this.subject.getValue();
 
-    const itemIndex = cartItems.findIndex(item => item.product._id === product._id);
+    const itemIndex = cartItems.findIndex(item => item.product.id === product.id);
 
     // check if item already exists
     if (itemIndex !== -1) {
@@ -59,7 +59,7 @@ export class CartStore{
    private updateAndCreateNewCart(updatedItem: CartItem) {
     const cartItems = this.subject.getValue();
 
-    const itemIndex = cartItems.findIndex(item => item.product._id === updatedItem.product._id);
+    const itemIndex = cartItems.findIndex(item => item.product.id === updatedItem.product.id);
 
     const newCart = cartItems.slice(0);
 
@@ -75,19 +75,27 @@ export class CartStore{
     const newCartItems = this.deleteAndCreateNewCart(itemToDelete);
     this.subject.next(newCartItems);
 
-    return this.http.delete<CartItem[]>(`${cartUrl}/${itemToDelete.product._id}`);
+    return this.http.delete<CartItem[]>(`${cartUrl}/${itemToDelete.id}`);
   }
 
   private deleteAndCreateNewCart(itemToDelete: CartItem) {
     const cartItems = this.subject.getValue();
 
-    const newCart = cartItems.filter(item => !(item.product._id === itemToDelete.product._id));
+    const newCart = cartItems.filter(item => !(item.product.id === itemToDelete.product.id));
 
     return newCart;
   }
+clearCart(cartItems){
+ 
+  cartItems.forEach(item =>this.delete(item.id));
+  this.subject.next([]);
 
+}
+delete(id){
+ return this.http.delete<CartItem[]>(`${cartUrl}/${id}`)
+}
   private convertItemToIdOnly(item): any{
-    return {product: item.product._id, qty: item.qty};
+    return {product: item.product, qty: item.qty};
   }
 
   private doPutRequest(newCartItems: CartItem[]) {

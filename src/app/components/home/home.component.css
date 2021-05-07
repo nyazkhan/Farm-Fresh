@@ -33,3 +33,48 @@
   
   .link:hover { color: #007bff; }
   
+
+ 
+  /* Carousel styling */
+  #introCarousel,
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item.active {
+    height: 100vh;
+  }
+
+  .carousel-item:nth-child(1) {
+    background-image: url('https://wallpaperaccess.com/full/803471.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .carousel-item:nth-child(2) {
+    background-image: url('http://www.inthefieldconsultants.com/wp-content/uploads/2016/11/Farmtotablet.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .carousel-item:nth-child(3) {
+    background-image: url('https://kansasfarmfoodconnection.org/sites/default/files/styles/header/public/gettyimages-533437260_0.jpg?itok=XTEwCvYD');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  /* Height for devices larger than 576px */
+  @media (min-width: 992px) {
+    #introCarousel {
+      margin-top: -58.59px;
+    }
+  }
+
+  .navbar .nav-link {
+    color: #fff !important;
+  }
+
+  .container{
+    margin-top: 40px;
+  }

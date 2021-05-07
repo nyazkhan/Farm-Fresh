@@ -27,18 +27,18 @@ export class AuthStore {
     private cartStore: CartStore, private cookieService: CookieService) {
 
 
-      
-      const user = localStorage.getItem(AUTH_DATA);
-      
-      if (user) {
-        this.subject.next(JSON.parse(user));
-        this.cartStore.init();
-        this.router.navigate(['./shop']);
+
+    const user = localStorage.getItem(AUTH_DATA);
+
+    if (user) {
+      this.subject.next(JSON.parse(user));
+      // this.cartStore.init();
+      this.router.navigate(['./shop']);
 
 
-      }
-      this.isLoggedIn$ = this.user$.pipe(map(user => !user));
-      this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
+    }
+    this.isLoggedIn$ = this.user$.pipe(map(user => !user));
+    this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
 
   }
 
@@ -59,15 +59,22 @@ export class AuthStore {
             this.subject.next(user[0]);
             localStorage.setItem(AUTH_DATA, JSON.stringify(user[0]));
             this.cartStore.init();
-            this.isLoggedIn$ = this.user$.pipe(map(user => !user[0]));
+            this.isLoggedIn$ = this.user$.pipe(map(user => user = user[0]));
+            if (localStorage.getItem('checkout') == 'true') {
+              this.router.navigate(['./checkout']);
 
-            this.router.navigate(['./shop']);
+            } else {
+              this.router.navigate(['./shop']);
+
+            }
           }
         }),
         shareReplay()
       );
   }
-
+  isUserLoggin() {
+    return localStorage.getItem(AUTH_DATA) ? true : false;
+  }
   logout() {
     return this.http.post<any>('http://127.0.0.1:3000/user', {})
       .pipe(
@@ -75,6 +82,7 @@ export class AuthStore {
 
           this.subject.next(null);
           localStorage.removeItem(AUTH_DATA);
+          localStorage.removeItem('checkout');
           this.router.navigateByUrl('/login');
         }),
         shareReplay()
@@ -106,7 +114,7 @@ export class AuthStore {
   }
 
   getUserDetails(): User {
-    return this.subject.getValue();
+    return JSON.parse(localStorage.getItem(AUTH_DATA));
   }
 
   isAdmin() {

@@ -1,7 +1,7 @@
-<div *ngIf="(message$ | async)" class="container mt-5 text-center">
+<div *ngIf="(message)" class="container mt-5 text-center">
   <div class="col-10 offset-1 col-md-4 offset-md-4">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{message$ | async}}
+    <div [ngClass]="{ 'alert alert-danger alert-dismissible fade show' :message.type==0,  'alert alert-success alert-dismissible fade show' :message.type==1 }" class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{message.mesg}}
       <button type="button" class="close" (click)="clear()">
         <i class="fas fa-times"></i>
       </button>

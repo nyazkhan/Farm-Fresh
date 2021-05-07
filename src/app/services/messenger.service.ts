@@ -9,8 +9,8 @@ import {NavigationStart, Router} from '@angular/router';
   providedIn: 'root'
 })
 export class MessengerService {
-  private subject = new BehaviorSubject<string>(null);
-  message$: Observable<string> = this.subject.asObservable();
+  private subject = new BehaviorSubject<{mesg:string,type:number}>(null);
+  message$: Observable<{mesg:string,type:number}> = this.subject.asObservable();
 
   constructor(private router: Router) {
     router.events.subscribe((event: any) => {
@@ -20,8 +20,15 @@ export class MessengerService {
     });
   }
 
-  alertMessage(message: string) {
-    this.subject.next(message);
+  alertMessage(message: string ) {
+    this.subject.next({mesg:message,type:0});
+    // setTimeout(()=>{  this.subject.next(null);}, 300)
+
+  }
+
+  successMessage(message: string ) {
+    this.subject.next({mesg:message,type:1});
+    // setTimeout(()=>{ this.subject.next(null);}, 300)
   }
 
   clearMessage() {

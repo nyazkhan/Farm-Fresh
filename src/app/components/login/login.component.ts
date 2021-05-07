@@ -38,13 +38,15 @@ export class LoginComponent implements OnInit {
       this.auth.login(val.email, val.password, val.remember)
         .subscribe(
           (userData) => {
-            this.userDetails = userData
-            for(let User of this.userDetails){
-              if(val.email === User["email"] && val.password === User["password"]){
-                console.log("Login Successful");
-                this.router.navigate(['./shop']);
-              }
-            }
+            this.messageService.successMessage('Successfuly Login');
+
+            // this.userDetails = userData
+            // for(let User of this.userDetails){
+            //   if(val.email === User["email"] && val.password === User["password"]){
+            //     console.log("Login Successful");
+            //     this.router.navigate(['./shop']);
+            //   }
+            // }
           },
           err => {
             this.messageService.alertMessage(err.error);

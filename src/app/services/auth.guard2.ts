@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard2 implements CanActivate, CanActivateChild {
   constructor(private auth: AuthStore, private router: Router) {
   }
 

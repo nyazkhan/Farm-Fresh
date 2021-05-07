@@ -15,6 +15,7 @@ import {UserActivityComponent} from './components/admin/user-activity/user-activ
 import {PurchasesHistoryComponent} from './components/admin/purchases-history/purchases-history.component';
 import {HomeComponent} from './components/home/home.component';
 import {ReadmeComponent} from './components/readme/readme.component';
+import { AuthGuard2 } from './services/auth.guard2';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckOutComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard2]
   },
   {
     path: 'checkout/thanks',
@@ -58,7 +59,7 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'admin',
@@ -69,7 +70,8 @@ const routes: Routes = [
       { path: 'addProduct', component: AddProductFormComponent },
       { path: 'userActivity', component: UserActivityComponent },
       { path: 'purchasesHistory', component: PurchasesHistoryComponent }
-    ]
+    ] ,     canActivate: [AuthGuard]
+
   },
   {
     path: '**',
@@ -86,7 +88,8 @@ const routes: Routes = [
   ],
   providers: [
     ProductsResolver,
-    AuthGuard
+    AuthGuard,
+    AuthGuard2
   ]
 })
 

@@ -23,13 +23,17 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cartStore.init();
+
     this.cartItems$ = this.cartStore.cartItems$;
   }
 
   isCartEmpty(){
     return false;
   }
-
+  setlastRout(){
+    localStorage.setItem('checkout', 'true')
+  }
   // getCartTotal() {
   //   return this.cartStore.getCartTotal();
   // }

@@ -64,12 +64,12 @@ export class AddProductFormComponent implements OnInit {
   }
 
   deleteAttachment() {
-    //this.fileNames.splice(index, 1);
+    // this.fileNames.splice(index, 1);
     this.file = null;
   }
 
   uploadProduct() {
-    if (this.addProductForm.valid && this.file != null) {
+    if (this.addProductForm.valid ) {
       this.productService.uploadProduct(this.nameControl.value, this.priceControl.value, this.categoryControl.value, this.file).subscribe(
         () => this.router.navigateByUrl('/shop'),
         (error) => alert('error in upload product')

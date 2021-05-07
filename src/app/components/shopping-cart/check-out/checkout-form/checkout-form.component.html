@@ -73,7 +73,7 @@
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="cc-name">Name on card</label>
-      <input type="text" class="form-control" id="cc-name" placeholder="" required>
+      <input type="text"  class="form-control" id="cc-name" name="cc-name"  [ngClass]="getValidationClasses('ccname')" formControlName="ccname" placeholder="Name" required>
       <small class="text-muted">Full name as displayed on card</small>
       <div class="invalid-feedback">
         Name on card is required
@@ -81,7 +81,7 @@
     </div>
     <div class="col-md-6 mb-3">
       <label for="cc-number">Credit card number</label>
-      <input type="text" class="form-control" id="cc-number" placeholder="" required>
+      <input type="text" class="form-control" id="cc-number" name="cc-number"  [ngClass]="getValidationClasses('ccnumber')" formControlName="ccnumber" placeholder=" Credit card number " required>
       <div class="invalid-feedback">
         Credit card number is required
       </div>
@@ -90,14 +90,17 @@
   <div class="row">
     <div class="col-md-3 mb-3">
       <label for="cc-expiration">Expiration</label>
-      <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+      <input type="text" class="form-control" id="cc-expiration" name="cc-expiration"  [ngClass]="getValidationClasses('ccexpiration')" formControlName="ccexpiration" placeholder="MM / YY  " required>
+      <small class="text-muted"> eg 03/20</small>
       <div class="invalid-feedback">
         Expiration date required
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="cc-cvv">CVV</label>
-      <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+      <input type="text" class="form-control" id="cc-cvv" name="cc-cvv"  [ngClass]="getValidationClasses('cccvv')" formControlName="cccvv" placeholder="CVV" required>
+      <small class="text-muted"> eg 123</small>
+
       <div class="invalid-feedback">
         Security code required
       </div>

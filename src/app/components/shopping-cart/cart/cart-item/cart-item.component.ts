@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 import {CartItem} from '../../../../models/cart-item';
 import {MessengerService} from '../../../../services/messenger.service';
 import {CartStore} from '../../../../services/stores/cart-store';
@@ -11,7 +12,7 @@ import {CartStore} from '../../../../services/stores/cart-store';
 export class CartItemComponent implements OnInit {
   @Input() cartItem: CartItem;
 
-  constructor(private msg: MessengerService, private cartStore: CartStore) { }
+  constructor(private msg: MessengerService, private cartStore: CartStore , private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +22,7 @@ export class CartItemComponent implements OnInit {
   }
 
   updateCartItem(){
-    this.cartStore.updateCart(this.cartItem).subscribe(() => console.log('cart updated'));
+    this.cartService.updateCartItem(this.cartItem).subscribe(() => console.log('cart updated'));
   }
 
   increaseQty() {
@@ -31,6 +32,11 @@ export class CartItemComponent implements OnInit {
 
   decreaseQty() {
     this.cartItem.qty--;
-    this.updateCartItem();
+    if( this.cartItem.qty<=0){
+      this.remove()
+    } else {
+
+      this.updateCartItem();
+    }
   }
 }

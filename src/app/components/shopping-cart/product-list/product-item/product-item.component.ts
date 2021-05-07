@@ -11,8 +11,8 @@ import {CartStore} from '../../../../services/stores/cart-store';
 })
 export class ProductItemComponent implements OnInit {
   @Input()
-  productItem: Product;
-  isExistInCart = false;
+  productItem;
+  // isExistInCart = false;
 
   quantity = 1;
 
@@ -24,19 +24,50 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleAddToCart() {
-    this.isExistInCart = true;
-    this.cartService.addProductToCart(this.productItem, this.quantity).subscribe(() => {
-      console.log('product added');
+    this.productItem.isExistInCart = true;
+    let copyProduct = JSON.parse(JSON.stringify(this.productItem))
+    delete copyProduct.qty
+   delete copyProduct.isExistInCart
+   delete copyProduct.cartId
+
+    this.cartService.addProductToCart(copyProduct, this.productItem.qty).subscribe((ele) => {
+      console.log(ele);
+      this.productItem.cartId =ele.id
     });
   }
 
   increaseQuantity(){
-    this.quantity++;
+   this.productItem.qty++;
+   if (this.productItem.isExistInCart) {
+    let copyProduct = JSON.parse(JSON.stringify(this.productItem))
+    delete copyProduct.qty
+    delete copyProduct.cartId
+   delete copyProduct.isExistInCart
+    this.updateCartItem({
+      id: this.productItem.cartId,
+      product: copyProduct,
+      qty: this.productItem.qty,
+    })
+   }
   }
+  updateCartItem(item){
 
+    this.cartService.updateCartItem(item).subscribe((ele) => console.log('test'));
+  }
   decreaseQuantity(){
-    if (this.quantity > 1) {
-      this.quantity--;
+    if (this.productItem.qty > 1) {
+      this.productItem.qty--;
+      if (this.productItem.isExistInCart) {
+        let copyProduct = JSON.parse(JSON.stringify(this.productItem))
+        delete copyProduct.qty
+        delete copyProduct.cartId
+       delete copyProduct.isExistInCart
+        this.updateCartItem({
+          id: this.productItem.cartId,
+          product: copyProduct,
+          qty: this.productItem.qty,
+        })
+       }
     }
   }
 }
